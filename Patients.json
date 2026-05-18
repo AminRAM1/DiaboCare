@@ -3,27 +3,66 @@
         "id": 1,
         "Nom": "Ahmed benali",
         "Age": 55,
-        "Glycemie": 2.6,
-        "Medicaments_pris": true,
-        "Etat": "je me sens bien",
+        "Historique": [
+            {
+                "Date": "2026-05-15",
+                "Glycemie": 2.8,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-18",
+                "Glycemie": 1.8,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-18",
+                "Glycemie": 3.0,
+                "Etat": "je me sent tres malade",
+                "Medicament_pris": ""
+            }
+        ],
         "Medecin": "Dr. Karimi"
     },
     {
         "id": 2,
         "Nom": "Fatima Zahra rahmani",
         "Age ": 62,
-        "Glycemie": 0.5,
-        "Medicaments_pris": false,
-        "Etat": "je me sens un peu fatiguee",
+        "Historique": [
+            {
+                "Date": "2026-05-15",
+                "Glycemie": 0.5,
+                "Etat": "je me sens fatiguee",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-05-18",
+                "Glycemie": 1.4,
+                "Etat": "je suis un peu fatiguee",
+                "Medicament_pris": "oui"
+            }
+        ],
         "Medecin": "Dr. Alami"
     },
     {
         "id": 3,
         "Nom": "Youssef Idrissi",
         "Age": 48,
-        "Glycemie": 1.8,
-        "Medicaments_pris": true,
-        "Etat": "bien hamdollah",
+        "Historique": [
+            {
+                "Date": "2026-05-15",
+                "Glycemie": 1.8,
+                "Etat": "je me sens bien ",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-18",
+                "Glycemie": 1.7,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            }
+        ],
         "Medecin": "Dr. Karimi"
     }
 ]
