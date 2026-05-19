@@ -1,5 +1,6 @@
 import json
 from datetime import date
+from LLM import analyser_etat
 print("1- Tournée quotidienne ")
 print("2- Urgent patient ")
 today= str(date.today())
@@ -16,6 +17,7 @@ if(choix=="1"):
         print(f"\n{'='*50}")
         print(f"\n🤖 Agent : Bonjour {Nom_patient}, comment vous sentez-vous aujourd'hui?")
         etat = input("👤 Patient:")
+        state=analyser_etat(etat)
         print("\n🤖 Agent: Quelle est votre glycémie aujourd'hui ? (en g/L)")
         Glycemie=float(input("👤 Patient:"))
         print("\n🤖 Agent : Avez-vous pris vos médicaments ? (oui/non)")
