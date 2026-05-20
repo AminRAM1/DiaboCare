@@ -17,10 +17,10 @@
                 "Medicament_pris": "oui"
             },
             {
-                "date": "2026-05-18",
-                "Glycemie": 3.0,
-                "Etat": "je me sent tres malade",
-                "Medicament_pris": ""
+                "date": "2026-05-20",
+                "Glycemie": 2.2,
+                "Etat": "fatigue intense",
+                "Medicament_pris": "non"
             }
         ],
         "Medecin": "Dr. Karimi"
@@ -41,6 +41,12 @@
                 "Glycemie": 1.4,
                 "Etat": "je suis un peu fatiguee",
                 "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-20",
+                "Glycemie": 1.1,
+                "Etat": "faiblesse soudaine",
+                "Medicament_pris": "non"
             }
         ],
         "Medecin": "Dr. Alami"
@@ -60,6 +66,12 @@
                 "date": "2026-05-18",
                 "Glycemie": 1.7,
                 "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-20",
+                "Glycemie": 1.9,
+                "Etat": "je me sens bien ",
                 "Medicament_pris": "oui"
             }
         ],

@@ -17,7 +17,7 @@ if(choix=="1"):
         print(f"\n{'='*50}")
         print(f"\n🤖 Agent : Bonjour {Nom_patient}, comment vous sentez-vous aujourd'hui?")
         etat = input("👤 Patient:")
-        state=analyser_etat(etat)
+        prediction=analyser_etat(etat)
         print("\n🤖 Agent: Quelle est votre glycémie aujourd'hui ? (en g/L)")
         Glycemie=float(input("👤 Patient:"))
         print("\n🤖 Agent : Avez-vous pris vos médicaments ? (oui/non)")
@@ -34,16 +34,21 @@ if(choix=="1"):
             print(f"⚠️  Alerte envoyée à {patient['Medecin']}")
             print(f"🤖 Agent : Mangez quelque chose de sucré immédiatement (jus, sucre...).") 
         else:
-            print(f"✅ Glycémie normale")
-            print(f"🤖 Agent : Très bien {Nom_patient}, continuez à suivre votre traitement et mangez équilibré.")
-        
+            if(prediction!="HYPOGLYCEMIE SUSPECTÉE" and prediction!="HYPERGLYCEMIE SUSPECTÉE"):
+                print(f"✅ Glycémie normale")
+                print(f"🤖 Agent : Très bien {Nom_patient}, continuez à suivre votre traitement et mangez équilibré.")
+            
+            if(prediction=="HYPOGLYCEMIE SUSPECTÉE" or prediction=="HYPERGLYCEMIE SUSPECTÉE"):
+                condition = prediction.replace(" SUSPECTÉE", "")
+                print(f"⚠️ Alerte envoyée à {patient['Medecin']} : Malgré une glycémie normale, des symptômes d'{condition} ont été détectés. Surveillance recommandée.")
+
         if(Medicament=="Non" or Medicament=="non"):
             print(f"⚠️  AVERTISSEMENT : Médicament non pris !")
 
     #Saving Data
         entree={"date":today,"Glycemie":Glycemie,"Etat":etat,"Medicament_pris":Medicament}
         patient["Historique"].append(entree)
-        with open("patients.json","w",encoding="utf-8") as f:
+        with open("Patients.json","w",encoding="utf-8") as f:
             json.dump(patients,f, ensure_ascii=False, indent=4)
         print("✅ Données sauvegardées !")  
 
@@ -52,6 +57,7 @@ elif(choix=="2"):
     with open("Patients.json","r",encoding="utf-8") as f:
         patients=json.load(f) 
     etat=input("comment vous sentez-vous?\n")
+    prediction=analyser_etat(etat)
     Nom_patient=input("Quelle est votre nom:\n")
     patient_trouve=None
     for patient in patients:
@@ -74,14 +80,18 @@ elif(choix=="2"):
             print(f"⚠️  Alerte envoyée à {patient['Medecin']}\n")
             print("🤖 Agent : Restez calme, le médecin a été alerté et va vous contacter.\n")
         else:
-            print("✅ Glycémie normale")
-            print("🤖 Agent : Votre glycémie est stable, surveillez votre état et contactez votre médecin si ça empire.")
+            if(prediction!="HYPOGLYCEMIE SUSPECTÉE" and prediction!="HYPERGLYCEMIE SUSPECTÉE"):
+                print("✅ Glycémie normale")
+                print("🤖 Agent : Votre glycémie est stable, surveillez votre état et contactez votre médecin si ça empire.")
+            if(prediction=="HYPOGLYCEMIE SUSPECTÉE" or prediction=="HYPERGLYCEMIE SUSPECTÉE"):
+                condition = prediction.replace(" SUSPECTÉE", "")
+                print(f"⚠️ Alerte envoyée à {patient['Medecin']} : Malgré une glycémie normale, des symptômes d'{condition} ont été détectés. Surveillance recommandée.")
         #sauvegarder les donnees:
         if(patient_trouve!=None):
             entree={"date":today,"Glycemie":Glycemie,"Etat":etat,"Medicament_pris":""}
             patient["Historique"].append(entree)
 
-            with open("patients.json","w",encoding="utf-8") as f:
+            with open("Patients.json","w",encoding="utf-8") as f:
                 json.dump(patients,f, ensure_ascii=False, indent=4)
 
 
