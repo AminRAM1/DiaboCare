@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>DiaboCare — Dashboard Médecin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f0f8;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+        }
+        .patient-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .normal { border-left: 6px solid green; }
+        .critique { border-left: 6px solid red; }
+        .alerte {
+            background-color: #ffe0e0;
+            color: red;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th {
+            background-color: #1a73e8;
+            color: white;
+            padding: 8px;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1> patients historic</h1>
+
+    {% for patient in patients %}
+    
+    {% set last = patient.Historique[-1] if patient.Historique else None %}
+    {% set critique = last and (last.Glycemie > 2.5 or last.Glycemie < 0.7) %}
+
+    <div class="patient-card {{ 'critique' if critique else 'normal' }}">
+        <h2>👤 {{ patient.Nom }} — {{ patient.Medecin }}</h2>
+
+        {% if critique %}
+        <p class="alerte">⚠️ ALERTE : Glycémie critique détectée !</p>
+        {% endif %}
+
+        {% if last %}
+        <p>📅 Dernière mesure : {{ last.date }}</p>
+        <p>🩸 Glycémie : {{ last.Glycemie }} g/L</p>
+        <p>💊 Médicament pris : {{ last.Medicament_pris }}</p>
+        <p>😊 État : {{ last.Etat }}</p>
+        {% else %}
+        <p>Aucune donnée disponible</p>
+        {% endif %}
+
+        <h3>📊 Historique</h3>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Glycémie (g/L)</th>
+                <th>Médicament</th>
+                <th>État</th>
+            </tr>
+            {% for entree in patient.Historique %}
+            <tr>
+                <td>{{ entree.date }}</td>
+                <td>{{ entree.Glycemie }}</td>
+                <td>{{ entree.Medicament_pris }}</td>
+                <td>{{ entree.Etat }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    {% endfor %}
+
+</body>
+</html>
