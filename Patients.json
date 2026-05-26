@@ -21,7 +21,20 @@
                 "Glycemie": 2.2,
                 "Etat": "fatigue intense",
                 "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-05-25",
+                "Glycemie": 2.8,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-26",
+                "Glycemie": 2.0,
+                "Etat": "Ahmed benali:je sens d'un fatigue intenseDiaboCare:HYPERGLYCEMIE SUSPECTÉE",
+                "Medicament_pris": "oui"
             }
+
         ],
         "Medecin": "Dr. Karimi"
     },
@@ -47,7 +60,20 @@
                 "Glycemie": 1.1,
                 "Etat": "faiblesse soudaine",
                 "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-05-25",
+                "Glycemie": 1.9,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-26",
+                "Glycemie": 0.5,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
             }
+
         ],
         "Medecin": "Dr. Alami"
     },
@@ -72,6 +98,18 @@
                 "date": "2026-05-20",
                 "Glycemie": 1.9,
                 "Etat": "je me sens bien ",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-25",
+                "Glycemie": 1.8,
+                "Etat": "je me sens tres bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-05-26",
+                "Glycemie": 1.8,
+                "Etat": "je me sens bien",
                 "Medicament_pris": "oui"
             }
         ],
