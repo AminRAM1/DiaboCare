@@ -2,7 +2,7 @@ import json
 from datetime import date
 from LLM import analyser_etat
 from react import agent_react
-
+import react
 
 print("DiaboCare: 1- Tournée quotidienne ")
 print("DiaboCare: 2- Urgent patient ")
@@ -36,4 +36,14 @@ elif(choix=="2"):
 
     else:
         agent_react(patient_trouve,etat)    
-            
+
+#performances:
+print(f"{50*'='}")
+print("\nRapport de performance:")
+print(f"Patients suivi : {react.patients_completes}/{react.patients_total} ({(react.patients_completes/react.patients_total)*100:.1f}%)")
+
+if(react.patients_avec_anomalie!=0):
+    print(f"Temps moyen de réponse aux anomalies :{react.time_moy_anomalie/react.patients_avec_anomalie:.2f} secondes")
+
+print(f"Faux positive : {react.false_positive}")
+print(f"Faux negative :{react.false_negative}")

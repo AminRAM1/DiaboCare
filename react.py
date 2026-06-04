@@ -6,6 +6,15 @@ import time
 import config 
 
 client= Mistral(api_key=config.API_KEY)
+# les variable de perfermance:
+patients_total=0
+patients_completes=0
+time_moy_anomalie=0
+patients_avec_anomalie=0
+debut=0
+false_positive=0
+false_negative=0
+alerte_envoye=False
 
 outils_disponibles = """
 - demander_glycemie : demande la glycémie au patient
@@ -23,21 +32,41 @@ def appeler_LLM(historique):
     )
     return reponse.choices[0].message.content
 
-def execute_action(action,patient,contexte):
+def execute_action(action,patient,contexte):    
     
+    global debut, patients_avec_anomalie, time_moy_anomalie, alerte_envoye, false_positive, patients_completes, false_negative
+
     if action == "demander_glycemie":
         glycemie = demander_glycemie(patient)
+        debut=time.time()
         contexte["glycemie"]= glycemie
         return f"glycemie recuperee:{glycemie} g/L"
 
     elif action == "demander_medicament":
         medicament=demander_medicament(patient)
         contexte["medicament"]=medicament
+        
+        if(medicament=="oui"):contexte["Compteur_med"]=0
+        elif(medicament=="non"):
+            contexte["Compteur_med"]=patient["Compteur_med"]+1
+
+            if(contexte["Compteur_med"]>=2):
+                print(f"DiaboCare: ALERTE : {patient['Nom']} n'a pas pris ses médicaments depuis 2 jours consécutifs ! Médecin notifié : {patient['Medecin']}")
+                contexte["Compteur_med"]=0
         return f"medicament pris {medicament}" 
 
     elif action == "alerter_medecin":
+        patients_avec_anomalie+=1
+        fin=time.time()
+        time_moy_anomalie+=fin-debut
+        debut=0
         message=f"le glycemie de {patient['Nom']} est {contexte.get('glycemie', 'inconnue')} g/L"
         medecin= patient["Medecin"]
+        alerte_envoye=True
+        #detection false positive:
+        if(0.7<= contexte.get("glycemie",1.5) <=2.5):
+            false_positive+=1
+
         return alerter_medecin(medecin,message)
     
     elif action == "envoyer_conseil":
@@ -54,7 +83,7 @@ def execute_action(action,patient,contexte):
         return "Conseil envoyé"
 
     elif action == "sauvegarder":
-        nom_patient,GLYCEMIE,ETAT,MEDICAMENT = patient["Nom"],contexte.get("glycemie", 0),contexte.get("etat", ""),contexte.get("medicament", "")
+        nom_patient,GLYCEMIE,ETAT,MEDICAMENT,cmp = patient["Nom"],contexte.get("glycemie", 0),contexte.get("etat", ""),contexte.get("medicament", ""),contexte.get("Compteur_med", patient["Compteur_med"])
         
         if(0.7 <= GLYCEMIE <= 2.5):
             prediction=analyser_etat(ETAT)
@@ -64,10 +93,14 @@ def execute_action(action,patient,contexte):
         sauvegarder(nom_patient,
             GLYCEMIE,
             ETAT,
-            MEDICAMENT)
+            MEDICAMENT,
+            cmp)
         return "Données sauvegardées"
     
     elif action == "fin":
+        patients_completes+=1
+        if ((contexte.get("glycemie",1.5)>2.5 or contexte.get("glycemie",1.5 )<0.7) and not alerte_envoye):
+            false_negative+=1
         return "fin"
     
     return "Action inconnue"
@@ -76,8 +109,10 @@ def execute_action(action,patient,contexte):
 
 def agent_react(patient,etat):
 
+    global patients_total,alerte_envoye
+    patients_total+=1
+    alerte_envoye=False
     contexte= {"etat":etat}
-    
     historique= [
            
            {

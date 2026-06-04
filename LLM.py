@@ -1,7 +1,7 @@
 from mistralai import Mistral
+from config import API_KEY
 
-
-client=Mistral(api_key="XhK7Jn8S0tazEPKNuZhdwPz5YqdKufHZ")
+client=Mistral(api_key=API_KEY)
 def analyser_etat(etat_patient):
     
     reponse = client.chat.complete(

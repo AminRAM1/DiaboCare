@@ -3,6 +3,7 @@
         "id": 1,
         "Nom": "Ahmed benali",
         "Age": 55,
+        "Compteur_med": 0,
         "Historique": [
             {
                 "Date": "2026-05-15",
@@ -33,8 +34,67 @@
                 "Glycemie": 2.0,
                 "Etat": "Ahmed benali:je sens d'un fatigue intenseDiaboCare:HYPERGLYCEMIE SUSPECTÉE",
                 "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 2.9,
+                "Etat": "je me sens fatigue",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 2.8,
+                "Etat": "je sens d'un fatigue intense ",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 2.9,
+                "Etat": "je sens d'un fatigue intense",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-03",
+                "Glycemie": 3.0,
+                "Etat": "je sens d'un fatigue intense",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-03",
+                "Glycemie": 3.0,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 2.6,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 2.0,
+                "Etat": "bien",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 2.0,
+                "Etat": "bien",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 3.0,
+                "Etat": "bien",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 3.0,
+                "Etat": "bien",
+                "Medicament_pris": "non"
             }
-
         ],
         "Medecin": "Dr. Karimi"
     },
@@ -42,6 +102,7 @@
         "id": 2,
         "Nom": "Fatima Zahra rahmani",
         "Age ": 62,
+        "Compteur_med": 0,
         "Historique": [
             {
                 "Date": "2026-05-15",
@@ -72,8 +133,37 @@
                 "Glycemie": 0.5,
                 "Etat": "je me sens bien",
                 "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 0.6,
+                "Etat": "je sens d'un faiblesse soudaine",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 0.5,
+                "Etat": "je sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-03",
+                "Glycemie": 0.5,
+                "Etat": "je sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-03",
+                "Glycemie": 0.5,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 0.4,
+                "Etat": "birn",
+                "Medicament_pris": "oui"
             }
-
         ],
         "Medecin": "Dr. Alami"
     },
@@ -81,6 +171,7 @@
         "id": 3,
         "Nom": "Youssef Idrissi",
         "Age": 48,
+        "Compteur_med": 0,
         "Historique": [
             {
                 "Date": "2026-05-15",
@@ -110,6 +201,36 @@
                 "date": "2026-05-26",
                 "Glycemie": 1.8,
                 "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 1.8,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-02",
+                "Glycemie": 1.9,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-03",
+                "Glycemie": 1.9,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-03",
+                "Glycemie": 2.0,
+                "Etat": "tres bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-04",
+                "Glycemie": 1.8,
+                "Etat": "bien",
                 "Medicament_pris": "oui"
             }
         ],
