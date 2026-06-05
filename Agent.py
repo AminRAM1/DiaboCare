@@ -46,4 +46,4 @@ if(react.patients_avec_anomalie!=0):
     print(f"Temps moyen de réponse aux anomalies :{react.time_moy_anomalie/react.patients_avec_anomalie:.2f} secondes")
 
 print(f"Faux positive : {react.false_positive}")
-print(f"Faux negative :{react.false_negative}")
+print(f"Faux negative : {react.false_negative}") 

@@ -1,5 +1,5 @@
 from mistralai import Mistral
-from Tools import demander_glycemie,demander_medicament,alerter_medecin,envoyer_conseil,sauvegarder
+from Tools import demander_glycemie,demander_medicament,alerter_medecin,envoyer_conseil,sauvegarder,envoye_email
 import json
 from LLM import analyser_etat
 import time
@@ -66,7 +66,16 @@ def execute_action(action,patient,contexte):
         #detection false positive:
         if(0.7<= contexte.get("glycemie",1.5) <=2.5):
             false_positive+=1
-
+        patient_gly=contexte.get("glycemie",1.5)
+        
+        if(patient_gly>2.5):
+            message_to_med =f"Hyperglycémie détectée (glycémie ={patient_gly} g/L)Le patient nécessite une attention médicale immédiate."
+            envoye_email(patient["Email_med"],message_to_med,patient["Nom"])
+        
+        elif(patient_gly<0.7):
+            message_to_med =f"Hypoglycémie détectée (glycémie ={patient_gly} g/L)Le patient nécessite une attention médicale immédiate."
+            envoye_email(patient["Email_med"],message_to_med,patient["Nom"])
+            
         return alerter_medecin(medecin,message)
     
     elif action == "envoyer_conseil":

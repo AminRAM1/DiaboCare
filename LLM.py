@@ -33,6 +33,3 @@ def analyser_etat(etat_patient):
         ]
     )
     return reponse.choices[0].message.content
-
-test=analyser_etat("je suis vertiges et je tremble depuis ce matin")
-print(test)

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  
     <meta charset="UTF-8">
     <title>DiaboCare — Dashboard Médecin</title>
     <style>
@@ -12,9 +13,9 @@
             padding: 20px;
         }
         
-        /* Titres principaux en couleur Or */
+       
         h1, h2, h3 {
-            color: #FFD700 !important; /* Golden */
+            color: #FFD700 !important; 
             text-align: center;
         }
 
@@ -33,7 +34,6 @@
             max-width: 800px;
         }
 
-        /* Bordures de statut latéral */
         .normal { border-left: 10px solid #008000 !important; }
         .critique { border-left: 10px solid #FF0000 !important; }
 
@@ -53,7 +53,6 @@
             border: 1px solid #ffffff;
         }
 
-        /* Titres du tableau en rouge */
         th {
             background-color: #1a1a1a !important;
             color: #FF0000 !important; 
@@ -79,12 +78,12 @@
     {% set critique = last and (last.Glycemie > 2.5 or last.Glycemie < 0.7) %}
 
     <div class="patient-card {{ 'critique' if critique else 'normal' }}">
-        <!-- Utilisation du tiret - entre le nom et le médecin -->
         <h2>{{ patient.Nom }} - {{ patient.Medecin }}</h2>
 
         {% if critique %}
         <p class="alerte">ALERTE : Glycémie critique détectée !</p>
         {% endif %}
+
 
         {% if last %}
         <p>Dernière mesure : {{ last.date }}</p>
