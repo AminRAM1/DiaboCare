@@ -40,7 +40,8 @@ elif(choix=="2"):
 #performances:
 print(f"{50*'='}")
 print("\nRapport de performance:")
-print(f"Patients suivi : {react.patients_completes}/{react.patients_total} ({(react.patients_completes/react.patients_total)*100:.1f}%)")
+if(react.patients_total!=0):
+    print(f"Patients suivi : {react.patients_completes}/{react.patients_total} ({(react.patients_completes/react.patients_total)*100:.1f}%)")
 
 if(react.patients_avec_anomalie!=0):
     print(f"Temps moyen de réponse aux anomalies :{react.time_moy_anomalie/react.patients_avec_anomalie:.2f} secondes")

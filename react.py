@@ -37,7 +37,16 @@ def execute_action(action,patient,contexte):
     global debut, patients_avec_anomalie, time_moy_anomalie, alerte_envoye, false_positive, patients_completes, false_negative
 
     if action == "demander_glycemie":
+        nom_patient,ETAT= patient["Nom"],contexte.get("etat", "")
         glycemie = demander_glycemie(patient)
+        if(0.7 <= glycemie <= 2.5):
+            prediction=analyser_etat(ETAT)
+            if(prediction == "HYPERGLYCEMIE SUSPECTÉE" or prediction == "HYPOGLYCEMIE SUSPECTÉE"):
+                ETAT=f"{nom_patient}: " + ETAT +f"  DiaboCare:{prediction}"
+                contexte["etat"] = ETAT
+                print(f"DiaboCare a détecté : {prediction} , Alerte envoyée au médecin.")
+                envoye_email(patient["Email_med"], f"Malgré une glycémie normale, des symptômes de {prediction} ont été détectés chez {nom_patient}.", nom_patient)   
+
         debut=time.time()
         contexte["glycemie"]= glycemie
         return f"glycemie recuperee:{glycemie} g/L"
@@ -75,7 +84,7 @@ def execute_action(action,patient,contexte):
         elif(patient_gly<0.7):
             message_to_med =f"Hypoglycémie détectée (glycémie ={patient_gly} g/L)Le patient nécessite une attention médicale immédiate."
             envoye_email(patient["Email_med"],message_to_med,patient["Nom"])
-            
+
         return alerter_medecin(medecin,message)
     
     elif action == "envoyer_conseil":
@@ -92,13 +101,8 @@ def execute_action(action,patient,contexte):
         return "Conseil envoyé"
 
     elif action == "sauvegarder":
-        nom_patient,GLYCEMIE,ETAT,MEDICAMENT,cmp = patient["Nom"],contexte.get("glycemie", 0),contexte.get("etat", ""),contexte.get("medicament", ""),contexte.get("Compteur_med", patient["Compteur_med"])
-        
-        if(0.7 <= GLYCEMIE <= 2.5):
-            prediction=analyser_etat(ETAT)
-            if(prediction == "HYPERGLYCEMIE SUSPECTÉE" or prediction == "HYPoGLYCEMIE SUSPECTÉE"):
-                ETAT=f"{nom_patient}:"+ ETAT +f" DiaboCare:{prediction}"
-            
+        nom_patient,MEDICAMENT,cmp,GLYCEMIE,ETAT = patient["Nom"],contexte.get("medicament", ""),contexte.get("Compteur_med", patient["Compteur_med"]),contexte.get("glycemie", 0),contexte.get("etat", "")
+
         sauvegarder(nom_patient,
             GLYCEMIE,
             ETAT,

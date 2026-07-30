@@ -70,6 +70,96 @@
                 "Glycemie": 2.9,
                 "Etat": "je suis fatigue",
                 "Medicament_pris": "oui "
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 2.6,
+                "Etat": " je me sens fatiguee",
+                "Medicament_pris": " non"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 3.0,
+                "Etat": "je me sent tres fatiguee",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 0.9,
+                "Etat": "j'ai des vertiges et je tremble depuis ce matin",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 2.3,
+                "Etat": "je me sens bien",
+                "Medicament_pris": " non"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 2.0,
+                "Etat": "bien",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 2.7,
+                "Etat": "fatigue",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 3.0,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 3.0,
+                "Etat": " Je me sens très fatigué",
+                "Medicament_pris": " non"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 3.0,
+                "Etat": " Je me sens très fatigué",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 3.0,
+                "Etat": "je suis fatigue ",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 2.1,
+                "Etat": "Ahmed benali: J'ai une soif excessive  DiaboCare:HYPERGLYCEMIE SUSPECTÉE",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-29",
+                "Glycemie": 2.8,
+                "Etat": "je suis fatigue",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-29",
+                "Glycemie": 2.7,
+                "Etat": "je me sens fatigue",
+                "Medicament_pris": "oui "
+            },
+            {
+                "date": "2026-06-29",
+                "Glycemie": 2.7,
+                "Etat": "je me sens fatigue",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-07-27",
+                "Glycemie": 3.0,
+                "Etat": "fatigue",
+                "Medicament_pris": "oui "
             }
         ],
         "Medecin": "Dr. Karimi",
@@ -127,6 +217,60 @@
                 "date": "2026-06-05",
                 "Glycemie": 0.5,
                 "Etat": "pas bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 1.8,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 0.9,
+                "Etat": "j'ai des vertiges et je tremble depuis ce matin",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 0.9,
+                "Etat": "j'ai des vertiges et je tremble depuis ce matin",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 0.9,
+                "Etat": "j'ai des vertiges et je tremble depuis ce matin",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 0.9,
+                "Etat": "j'ai des vertiges et je tremble depuis ce matin",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 1.1,
+                "Etat": "Fatima Zahra rahmani: j'ai des vertiges et je tremble depuis ce matin  DiaboCare:HYPOGLYCEMIE SUSPECTÉE",
+                "Medicament_pris": " oui"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 2.3,
+                "Etat": " je me sens bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 0.3,
+                "Etat": " J'ai des vertiges",
+                "Medicament_pris": "oui "
+            },
+            {
+                "date": "2026-06-29",
+                "Glycemie": 2.0,
+                "Etat": "bien",
                 "Medicament_pris": "oui"
             }
         ],
@@ -186,6 +330,30 @@
                 "Glycemie": 1.8,
                 "Etat": "bien",
                 "Medicament_pris": "oui "
+            },
+            {
+                "date": "2026-06-25",
+                "Glycemie": 1.9,
+                "Etat": "bien",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 2.0,
+                "Etat": "clear ",
+                "Medicament_pris": "oui"
+            },
+            {
+                "date": "2026-06-26",
+                "Glycemie": 2.1,
+                "Etat": "je me sens bien",
+                "Medicament_pris": "non"
+            },
+            {
+                "date": "2026-06-29",
+                "Glycemie": 2.0,
+                "Etat": "bien ",
+                "Medicament_pris": "oui"
             }
         ],
         "Medecin": "Dr. Karimi",
