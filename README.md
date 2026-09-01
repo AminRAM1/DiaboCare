@@ -1,30 +1,43 @@
-# Comment lancer le projet
+#  DiaboCare Agent — Version Web
 
-# 1- installer les dépendances:
-pip install mistralai flask
+Agent IA autonome pour le suivi automatisé des patients diabétiques.
 
-# 2-Configurer la clé API:
-Créer un fichier config.py dont le contenu est : 
+## Description
+DiaboCare est un système intelligent qui assure le suivi quotidien des patients diabétiques via une interface web. Il contacte les patients proactivement, collecte leurs données glycémiques, détecte les anomalies et alerte les médecins en cas d'urgence.
+
+##  Comment lancer le projet
+
+### 1. Installer les dépendances
+```bash
+pip install flask mistralai apscheduler
+```
+
+### 2. Configurer config.py
+```python
 API_KEY = "ta_cle_api_mistral"
+mon_email = "ton_email@gmail.com"
+code_compte = "ton_mot_de_passe_app_gmail"
+```
 
-# 3-Lancer l'agent :
-python Agent.py
-
-# 4-lancer le dashboard:
+### 3. Lancer le serveur
+```bash
 python dashboard.py
+```
 
-puis ouvrir http://localhost:5000
+### 4. Accéder aux interfaces
+- **Interface patient (urgence)** → http://localhost:5000/PatientsInterface/Modeurgent
+- **Interface médecin** → http://localhost:5000/MedecinInterface
 
-# Technologies utilisées:
+##  Technologies utilisées
 - Python
+- Flask
 - Mistral AI (LLM)
-- Flask (Dashboard)
+- HTML/CSS/JavaScript
 - JSON (Base de données)
+- APScheduler (emails quotidiens)
 
-# Auteurs:
--Mohamed Amine GOUALY 
+##  Auteurs
+- Mohamed Amine GOUALY
 
--Alaaeddine OUMDA
-
-# Encadrent:
-M. ESSAAIDI
+##  Encadrant
+- Dr Mohamed KAyyali 
