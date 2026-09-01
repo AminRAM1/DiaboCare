@@ -26,6 +26,7 @@ python dashboard.py
 
 ### 4. Accéder aux interfaces
 - **Interface patient (urgence)** → http://localhost:5000/PatientsInterface/Modeurgent
+- **Interface patient (quotidien)** → http://localhost:5000/MedecinInterface
 - **Interface médecin** → http://localhost:5000/MedecinInterface
 
 ##  Technologies utilisées
