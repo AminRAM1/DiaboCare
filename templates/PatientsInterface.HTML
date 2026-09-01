@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiaboCare — Suivi Patient</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    
+    <div class="navbar"> 
+      <h1 > DiaboCare</h1>
+      <img src="{{ url_for('static', filename='images/darkMode.png') }}"/>
+    </div >
+    
+    <div class="box-chat">
+    </div>
+    
+    <div class="input-zone">
+      <input type="text" placeholder="Write your answer" class="input-message"/>
+      <button class="btn-envoyer">Send</button>
+    </div>
+    
+    <div class="historique">
+      <p>History</p>
+      <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>blood glucose (g/L)</th>
+                <th>Medication</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody class="historique-tbody">
+        </tbody>
+    </table>
+    </div>
+  </div>
+
+    <script>
+      let mode="{{mode}}";
+      let nom = decodeURIComponent("{{ nom }}");
+      let chatBox=document.querySelector(".box-chat");
+      if(mode=="quotidien"){
+        chatBox.innerHTML+=`<div class="message-agent"><p> Hello ${nom}!</p></div>`
+
+      }
+      else if(mode=="urgent"){
+        chatBox.innerHTML+=`<div class="message-agent"><p> Hello !</p></div>`
+
+      }
+      window.onload= function(){
+        fetch("/reset", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"}
+    }).then(() => {
+        fetch("/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({message: mode, nom: nom})
+        })
+        .then(reponse => reponse.json())
+        .then(data => {
+            chatBox.innerHTML += `<div class="message-agent"><p>${data.reponse}</p></div>`;
+        });
+    });
+
+      };
+
+    document.querySelector(".btn-envoyer").addEventListener("click",function(){
+      let message=document.querySelector(".input-message").value;
+      chatBox.innerHTML += `<div class="message-patient"><p>${message}</p></div>`;
+        fetch("/chat", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({message: message})
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatBox.innerHTML += `<div class="message-agent"><p>${data.reponse}</p></div>`;
+            if(data.historique){
+              afficherHistorique(data.historique);
+              if(data.qtd){
+              setTimeout(function(){
+                chatBox.innerHTML += `<div class="message-agent"><p>${data.derniere_message}</p></div>`;
+                }, 1000);
+              }
+              else{setTimeout(function(){
+                chatBox.innerHTML += `<div class="message-agent"><p>${data.derniere_message}</p></div>`;
+                }, 1000);}
+            }
+            if(data.twodays){
+              chatBox.innerHTML+=`<div class="message-agent"><p>${data.twodays}</p></div>`
+            }
+        });
+      
+        document.querySelector(".input-message").value = "";
+        function afficherHistorique(historique){
+          let tbody=document.querySelector(".historique-tbody");
+          tbody.innerHTML="";
+          historique.forEach(entree => {
+            tbody.innerHTML+=`
+              <tr>
+                <td>${entree.date}</td>
+                <td>${entree.Glycemie}</td>
+                <td>${entree.Medicament_pris}</td>
+                <td>${entree.Etat}</td> 
+              </tr>
+            `
+            
+          });
+        }
+    });
+  </script>
+
+</body>
+
+
+</html>

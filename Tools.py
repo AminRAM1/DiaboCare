@@ -26,7 +26,7 @@ def envoyer_conseil(conseil):
     print(f"{conseil}")
     return "Conseil envoyé"
 
-def sauvegarder(nom_patient, glycemie, etat, medicament,cmp):
+def sauvegarder(nom_patient, glycemie, etat, medicament,cmp,derniere_session):
     with open("Patients.json", "r", encoding="utf-8") as f:
         patients = json.load(f)
     
@@ -40,6 +40,7 @@ def sauvegarder(nom_patient, glycemie, etat, medicament,cmp):
             }
             patient["Historique"].append(entree)
             patient["Compteur_med"]=cmp
+            patient["derniere_session"]=derniere_session
             break
     
     with open("Patients.json", "w", encoding="utf-8") as f:
