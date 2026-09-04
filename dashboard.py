@@ -15,7 +15,7 @@ agent_paroles={"mot_passe":"saisir votre mot de passe",
                "glycemie":"quelle est votre glycemie en (g/L) ?",
                "medicament":"avez-vous pris les medicament ?",
                "deja_effectue_suivi":"Vous avez déjà effectué votre suivi aujourd'hui. À demain",
-               "patient_non_trouve":"Patient non trouvé. Veuillez réessayer.\n(saisi votre nom complet avec le prénom en premier, exemple : mohamed Amine Goualy)",
+               "patient_non_trouve":"Patient not found. Please try again (enter your full name with your first name first, example: Mohamed Amine Goualy).",
                "mot_passe_incorrect":"mot passe incorrect",
                "message_incomprehensible":"Votre message est incompréhensible, veuillez répéter",
                "glycemie_erreur":"Veuillez entrer un nombre valide. Ex: 1.8",
@@ -56,7 +56,7 @@ def envoyer_emails_quotidiens():
         envoye_email(patient["Email_patient"],message,patient["Nom"])
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(envoyer_emails_quotidiens, 'cron', hour=15, minute=00)
+scheduler.add_job(envoyer_emails_quotidiens, 'cron', hour=20, minute=46)
 scheduler.start()
 today=str(date.today())
 
