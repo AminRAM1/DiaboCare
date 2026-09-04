@@ -5,6 +5,11 @@ Agent IA autonome pour le suivi automatisé des patients diabétiques.
 ## Description
 DiaboCare est un système intelligent qui assure le suivi quotidien des patients diabétiques via une interface web. Il contacte les patients proactivement, collecte leurs données glycémiques, détecte les anomalies et alerte les médecins en cas d'urgence.
 Pour plus d'informations, vous pouvez consulter le fichier rapport DiaboCare.
+##  Vidéo démonstrative:
+
+
+https://github.com/user-attachments/assets/b9747682-fc3a-46ec-a778-75befcce2ee0
+
 
 ##  Comment lancer le projet
 
